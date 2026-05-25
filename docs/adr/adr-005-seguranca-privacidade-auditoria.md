@@ -19,10 +19,10 @@ As operações relevantes, como agendamentos, cancelamentos e acessos administra
 
 ## Alternativas Consideradas
 
-### Controle de acesso simplificado
+### Controle de Acesso Simplificado
 Possui implementação mais rápida, porém reduz segurança e granularidade de permissões.
 
-### Auditoria apenas por logs técnicos
+### Auditoria Apenas por Logs Técnicos
 Facilita implementação inicial, mas dificulta rastreamento funcional e análise de incidentes.
 
 ## Trade-offs, Riscos e Impactos
@@ -30,4 +30,4 @@ A estratégia aumenta segurança, governança e rastreabilidade da plataforma.
 
 Como trade-off, adiciona maior complexidade de implementação e processamento adicional em operações críticas.
 
-A decisão reduz riscos relacionados à exposição indevida de dados e melhora capacidade de investigação de incidentes e conformidade regulatória.
+A decisão reduz riscos relacionados à exposição indevida de dados e melhora a capacidade de investigação de incidentes e a conformidade regulatória.

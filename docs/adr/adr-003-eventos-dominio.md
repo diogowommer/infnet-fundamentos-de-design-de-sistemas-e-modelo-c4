@@ -27,6 +27,6 @@ Centraliza fluxos, mas aumenta dependência entre componentes e reduz flexibilid
 ## Trade-offs, Riscos e Impactos
 Eventos reduzem acoplamento e melhoram escalabilidade interna.
 
-Como trade-off, aumentam complexidade de rastreamento e observabilidade.
+Como trade-off, aumentam a complexidade de rastreamento e observabilidade.
 
 A decisão também prepara a arquitetura para possível evolução futura para microsserviços.
