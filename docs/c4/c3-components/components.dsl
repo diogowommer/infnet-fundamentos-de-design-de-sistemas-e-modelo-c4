@@ -41,30 +41,30 @@ workspace "Plataforma de Agendamento Médico" "Arquitetura C4 da Plataforma de A
             tags "External System"
         }
 
-        plataforma.webApp -> plataforma.api.authController "Realiza autenticação"
-        plataforma.webApp -> plataforma.api.agendamentoController "Busca horários e agenda consultas"
-        plataforma.webApp -> plataforma.api.profissionalController "Gerencia profissionais e disponibilidade"
-        plataforma.webApp -> plataforma.api.pacienteController "Gerencia dados de pacientes"
+        plataforma.webApp -> plataforma.api.authController "Realiza autenticação" "HTTPS/REST"
+        plataforma.webApp -> plataforma.api.agendamentoController "Busca horários e agenda consultas" "HTTPS/REST"
+        plataforma.webApp -> plataforma.api.profissionalController "Gerencia profissionais e disponibilidade" "HTTPS/REST"
+        plataforma.webApp -> plataforma.api.pacienteController "Gerencia dados de pacientes" "HTTPS/REST"
 
-        plataforma.api.authController -> plataforma.api.segurancaService "Valida credenciais e permissões"
-        plataforma.api.agendamentoController -> plataforma.api.agendamentoService "Executa casos de uso de agendamento"
-        plataforma.api.profissionalController -> plataforma.api.disponibilidadeService "Atualiza disponibilidade"
-        plataforma.api.pacienteController -> plataforma.api.pacienteDomain "Aplica regras de cadastro"
+        plataforma.api.authController -> plataforma.api.segurancaService "Valida credenciais e permissões" "Chamada interna"
+        plataforma.api.agendamentoController -> plataforma.api.agendamentoService "Executa casos de uso de agendamento" "Chamada interna"
+        plataforma.api.profissionalController -> plataforma.api.disponibilidadeService "Atualiza disponibilidade" "Chamada interna"
+        plataforma.api.pacienteController -> plataforma.api.pacienteDomain "Aplica regras de cadastro" "Chamada interna"
 
-        plataforma.api.agendamentoService -> plataforma.api.agendaDomain "Aplica regras de agenda"
-        plataforma.api.agendamentoService -> plataforma.api.disponibilidadeService "Consulta horários disponíveis"
-        plataforma.api.agendamentoService -> plataforma.api.eventPublisher "Publica eventos de consulta"
-        plataforma.api.disponibilidadeService -> plataforma.api.profissionalDomain "Consulta regras de disponibilidade"
-        plataforma.api.segurancaService -> plataforma.api.repository "Consulta usuários e permissões"
+        plataforma.api.agendamentoService -> plataforma.api.agendaDomain "Aplica regras de agenda" "Chamada interna"
+        plataforma.api.agendamentoService -> plataforma.api.disponibilidadeService "Consulta horários disponíveis" "Chamada interna"
+        plataforma.api.agendamentoService -> plataforma.api.eventPublisher "Publica eventos de consulta" "Chamada interna"
+        plataforma.api.disponibilidadeService -> plataforma.api.profissionalDomain "Consulta regras de disponibilidade" "Chamada interna"
+        plataforma.api.segurancaService -> plataforma.api.repository "Consulta usuários e permissões" "Chamada interna"
 
-        plataforma.api.agendaDomain -> plataforma.api.repository "Usa abstrações de persistência"
-        plataforma.api.pacienteDomain -> plataforma.api.repository "Usa abstrações de persistência"
-        plataforma.api.profissionalDomain -> plataforma.api.repository "Usa abstrações de persistência"
+        plataforma.api.agendaDomain -> plataforma.api.repository "Usa abstrações de persistência" "Chamada interna"
+        plataforma.api.pacienteDomain -> plataforma.api.repository "Usa abstrações de persistência" "Chamada interna"
+        plataforma.api.profissionalDomain -> plataforma.api.repository "Usa abstrações de persistência" "Chamada interna"
 
-        plataforma.api.repository -> plataforma.database "Lê e grava dados"
-        plataforma.api.eventPublisher -> plataforma.internalEvents "Publica eventos internos"
-        plataforma.worker -> plataforma.internalEvents "Consome eventos internos"
-        plataforma.worker -> notificacoes "Envia notificações"
+        plataforma.api.repository -> plataforma.database "Lê e grava dados" "SQL"
+        plataforma.api.eventPublisher -> plataforma.internalEvents "Publica eventos internos" "Evento interno"
+        plataforma.worker -> plataforma.internalEvents "Consome eventos internos" "Evento interno"
+        plataforma.worker -> notificacoes "Envia notificações" "HTTP/API externa"
     }
 
     views {
